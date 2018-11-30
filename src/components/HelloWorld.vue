@@ -1,3 +1,4 @@
+
 <template>
   <v-container>
     <v-layout
@@ -24,10 +25,10 @@
       
       <v-flex xs12>
          <v-text-field
-      v-model = "mode"
-      disabled
-      readonly
-      ></v-text-field>
+          v-model = "mode"
+          disabled
+          readonly
+          ></v-text-field>
       </v-flex>
       
       <v-flex xs12>
@@ -39,19 +40,25 @@
         </v-flex>
         
         <v-flex xs12 mb-4>
-          <v-btn outline>
-          Query
+          <v-btn 
+          outline
+          @click.native = "xmode('Query')"
+          >
+            Query
           </v-btn> 
           
           <v-btn 
           outline
-          
+          @click.native = "xmode('Insert')"
           >
             Insert
           </v-btn> 
           
-          <v-btn outline>
-          Delete
+          <v-btn 
+          outline
+          @click.native = "xmode('Delete')"
+          >
+            Delete
           </v-btn> 
         </v-flex>
       
@@ -67,10 +74,17 @@
     }),
     methods: {
       test () {
+         // eslint-disable-next-line 
         console.log(this.input)
       },
       xmode (newMode) {
-        data.mode = newMode
+        this.mode = newMode
+      }
+    }, 
+    watch: {
+      'mode' : function () {
+         // eslint-disable-next-line 
+        console.log("Now running in", this.mode, "mode")
       }
     }
   }
